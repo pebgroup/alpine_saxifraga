@@ -1,0 +1,41 @@
+treefile = branch_wise.tre
+
+mrca = Ribes_crown Ribes_acuminatum_P06_WE06 Ribes_griffithii_P06_WB04
+min = Ribes_crown 15.6
+
+mrca = Ribes_stem Astilbe_shikokiana_P02_WC07 Ribes_griffithii_P06_WB04
+min = Ribes_stem 49
+max = Ribes_stem 79
+
+mrca = Itea_stem Itea_chinensis_S371 Choristylis_rhamnoides_P03_WE10
+min = Itea_stem 49
+
+mrca = Iteaceae_stem Penthorum_chinense_P01_WC06 Pterostemon_mexicanus_P01_WC01
+min = Iteaceae_stem 89
+
+mrca = Altingeaceae_stem Altingia_siamensis_P03_WF02 Distyliopsis_laurifolia_P01_WA04
+min = Altingeaceae_stem 89
+
+mrca = Haloragaceae_stem Penthorum_chinense_P01_WC06 Gonocarpus_oreophilus_P03_WE11
+min = Haloragaceae_stem 70.6
+
+mrca = All Saxifraga_roylei_S231 Paeonia_morisii_P03_WH11
+max = All 125
+
+numsites = 395310
+
+cv
+cviter=100
+pliter=100
+cvstart=10000
+cvstop=0.01
+cvsimaniter=10000
+plsimaniter=10000
+
+thorough
+opt = 1
+moredetail
+optad = 1
+moredetailad
+optcvad = 3
+moredetailcvad

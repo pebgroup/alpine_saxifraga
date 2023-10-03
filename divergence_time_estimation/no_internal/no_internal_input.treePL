@@ -1,0 +1,22 @@
+treefile = branch_wise.tre
+
+mrca = All Saxifraga_roylei_S231 Paeonia_morisii_P03_WH11
+max = All 125
+
+numsites = 395310
+
+cv
+cviter=100
+pliter=100
+cvstart=10000
+cvstop=0.01
+cvsimaniter=10000
+plsimaniter=10000
+thorough
+opt = 1
+optad = 5
+optcvad = 3
+moredetailcvad
+
+
+
