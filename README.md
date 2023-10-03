@@ -3,7 +3,7 @@ Scripts used to perform analyses for: Repeated upslope biome shifting during lat
 
 Divergence time estimation: this directory provides input files for *treePL* to enable estimation of each of the different time calibrated phylogenies that were estimated in this study. 
 
+[divergence_time_estimation](https://github.com/pebgroup/alpine_saxifraga/tree/main/divergence_time_estimation): provides the necessary inputs to estimate the time-calibrated phylogenies that were estimated in this study. In each case the *treePL* configuration file is provided (ending in .treePL) and the input tree file (ending in .tre)
 
-divergence_times: for estimating divergence times<br>
 CLASSE: for performing classe analyses in RevBayes<br>
 diversification: for estimating diversification rates in BAMM<br>
