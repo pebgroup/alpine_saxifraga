@@ -1,0 +1,106 @@
+########################
+###INITIAL_DATA_INPUT###
+########################
+
+treefile <- "..." # input time calibrated phylogeny, either the young or the old tree
+num_states <- 77 #includes state of global extinction
+classe_state_datafile <- "analysis_matrix.csv" # state matrix
+
+print("stage1")
+
+#######################
+
+observed_phylogeny <- readTrees(treefile)[1]
+root_age <- observed_phylogeny.rootAge()
+total_diversity <- 557
+rho <- observed_phylogeny.ntips()/total_diversity
+chardata <- readCharacterDataDelimited(classe_state_datafile, stateLabels=78, type="NaturalNumbers", separator=",", header=FALSE)
+
+print("stage2")
+
+mvi = 0
+mni = 0
+
+####################
+###OVERALL_PARAMS###
+####################
+
+###
+
+speciation_mean = ln(total_diversity/2.0)/root_age
+speciation_sd = 1.0
+speciation_overall ~ dnLognormal(ln(speciation_mean) - ((speciation_sd^2)/2), speciation_sd)
+moves[++mvi] = mvSlide(speciation_overall,weight=3.0,tune=true)
+moves[++mvi] = mvScale(speciation_overall,lambda=1,weight=3.0, tune=true)
+
+###
+
+extinction_mean = ln(total_diversity/2.0)/root_age
+extinction_sd = 1.0
+extinction_overall ~ dnLognormal(ln(extinction_mean) - ((extinction_sd^2)/2), extinction_sd)
+moves[++mvi] = mvSlide(extinction_overall,weight=3.0,tune=true)
+moves[++mvi] = mvScale(extinction_overall,lambda=1,weight=3.0,tune=true)
+
+###
+
+anagenetic_mean = ln(total_diversity/2.0)/root_age
+anagenetic_sd = 1.0
+anagenetic_overall ~ dnLognormal(ln(anagenetic_mean) - ((anagenetic_sd^2)/2), anagenetic_sd)
+moves[++mvi] = mvSlide(anagenetic_overall,weight=3.0,tune=true)
+moves[++mvi] = mvScale(anagenetic_overall,lambda=1,weight=3.0,tune=true)
+
+###
+
+print("stage3")
+
+#########################
+###MATRICES_AND_PARAMS###
+#########################
+
+for (i in 1:num_states){
+for (j in 1:num_states){
+ana_rates[i][j] <- 0.0
+}
+}
+
+source("ana_clado_events.Rev")
+
+anagenetic_ratematrix := fnFreeK(ana_rates, rescaled=false)
+
+print("stage4")
+
+################################
+###DEFINE_CLADOGENETIC_MATRIX###
+################################
+
+clado_matrix := fnCladogeneticSpeciationRateMatrix(clado_events, speciation, num_states)
+
+print("stage5")
+
+####################
+###PREPARE_CLASSE###
+####################
+
+root_frequencies <- simplex([0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1])
+print("stage6")
+classe ~ dnCDBDP(rootAge = root_age, cladoEventMap = clado_matrix, extinctionRates = extinction, Q = anagenetic_ratematrix, delta = 1.0, pi = root_frequencies, rho = rho, condition = "time",nTimeSlices = 50)
+print("stage7")
+classe.clamp(observed_phylogeny)
+print("stage8")
+classe.clampCharData(chardata)
+print("stage9")
+
+###########################
+###MONITORS_AND_ANALYSIS###
+###########################
+
+mymodel = model(classe)
+
+monitors[++mni] = mnModel(filename="habitat_parameters.log", printgen=1)
+monitors[++mni] = mnJointConditionalAncestralState(tree=observed_phylogeny, cdbdp=classe, type="NaturalNumbers", printgen=1, withTips=true,withStartStates=true, filename="habitat_anc_states.log")
+monitors[++mni] = mnScreen(printgen=1)
+monitors[++mni] = mnStochasticCharacterMap(cdbdp=classe, filename="habitat_smap.log", printgen=1)
+
+mymcmc = mcmc(mymodel, monitors, moves)
+#mymcmc.burnin(generations=50, tuningInterval=2)
+mymcmc.run(generations=500000000, tuningInterval=5)
