@@ -8,3 +8,8 @@ This provides the necessary inputs to perform lineage specific diversification r
 
 ## [ClaSSE](https://github.com/pebgroup/alpine_saxifraga/tree/main/ClaSSE) 
 This contains all the scripts needed to perform ClaSSE analyses that were undertaken as part of this study. [main](https://github.com/pebgroup/alpine_saxifraga/tree/main/ClaSSE/main) and [no_maximum](https://github.com/pebgroup/alpine_saxifraga/tree/main/ClaSSE/no_maximum) contain scripts for analysis on the main and no maximum trees respectively. [final_tree_and_data_frame_processing.r](https://github.com/pebgroup/alpine_saxifraga/blob/main/ClaSSE/final_tree_and_data_frame_processing.r) prunes the species tree and compiles the [biome_and_region_preference](https://github.com/pebgroup/alpine_saxifraga/blob/main/ClaSSE/biome_region.csv) into a matrix for analysis in the ClaSSE model. Note that line 118 in [final_tree_and_data_frame_processing.r](https://github.com/pebgroup/alpine_saxifraga/blob/main/ClaSSE/final_tree_and_data_frame_processing.r) needs adjusting depending on which output tree from treePL you are working on. [biome_and_region_preference](https://github.com/pebgroup/alpine_saxifraga/blob/main/ClaSSE/biome_region.csv) is equivalent to Table S5 in the manuscript. 
+
+## [molecular_branch_length_estimation](https://github.com/pebgroup/alpine_saxifraga/tree/main/molecular_branch_length_estimation)
+This contains scripts for branch-wise analysis and gene shopping. Needs a reference [species tree](https://github.com/pebgroup/alpine_saxifraga/blob/main/molecular_branch_length_estimation/species_tree_rooted.tre) and gene trees. These are available on the related Zenodo repository. 
+
+
