@@ -1,4 +1,4 @@
-# alpine_saxifraga
+# Repeated upslope biome shifting during late-Cenozoic climate cooling in a diverse alpine plant clade     
 Scripts used to perform analyses for: Repeated upslope biome shifting during late-Cenozoic climate cooling in a diverse alpine plant clade
 
 Divergence time estimation: this directory provides input files for *treePL* to enable estimation of each of the different time calibrated phylogenies that were estimated in this study. 
