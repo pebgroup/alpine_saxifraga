@@ -13,4 +13,5 @@ This contains all the scripts needed to perform ClaSSE analyses that were undert
 This contains scripts for branch-wise analysis and gene shopping. Needs a reference [species tree](https://github.com/pebgroup/alpine_saxifraga/blob/main/molecular_branch_length_estimation/species_tree_rooted.tre) and gene trees. Gene trees are available on the related Zenodo repository. The branch_wise script is an early version of the script that was used for this study. A far faster version will be made available soon.  
 
 ## [gene_trees_and_alignments](https://zenodo.org/record/8407835)
+Follow [this link](https://zenodo.org/record/8407835) to the zenodo repository.
 
