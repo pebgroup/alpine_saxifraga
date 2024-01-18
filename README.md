@@ -1,7 +1,7 @@
 # Repeated upslope biome shifting during late-Cenozoic climate cooling in a diverse alpine plant clade     
 
-## [gene trees and alignments](https://zenodo.org/record/8408326)
-Follow [this link](https://zenodo.org/record/8408326) to the zenodo repository.
+## [gene trees, alignments, and raw distribution data](https://zenodo.org/records/10530003)
+Follow [this link](https://zenodo.org/records/10530003) to the zenodo repository.
 
 ## [molecular branch length estimation](https://github.com/pebgroup/alpine_saxifraga/tree/main/molecular_branch_length_estimation)
 This contains scripts for branch-wise analysis and gene shopping. Needs a reference [species tree](https://github.com/pebgroup/alpine_saxifraga/blob/main/molecular_branch_length_estimation/species_tree_rooted.tre) and gene trees. Gene trees are available on the related Zenodo repository. The branch_wise script is an early version of the script that was used for this study. A far faster version will be made available soon. 
