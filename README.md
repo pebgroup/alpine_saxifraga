@@ -21,6 +21,6 @@ Scripts to generate the distribution map in figure 1. Source data for the distri
 ## [Generate Plots in Figure 2](https://github.com/pebgroup/alpine_saxifraga/tree/main/Generate_Figure_2)
 Scripts for plotting output from BAMM analysis (Fig. 2a and b) and biome specific speciation rates from CLASSE (Fig. 2c). Log files from BAMM and Classe [here](https://zenodo.org/records/8408326). 
 
-## [Generate Plots in Figure 3]
+## [Generate Plots in Figure 3](https://github.com/pebgroup/alpine_saxifraga/tree/main/Generate_Figure_3)
 Scripts for plotting rates of upslode biome shifts and inter regional mountain hopping as displayed in Figure 3. Simmaps are [here](https://zenodo.org/records/8408326)
 
